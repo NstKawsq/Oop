@@ -23,6 +23,13 @@ class cont():
                         print(self.container[i].name)
                         i += 1
 
+                    elif part[0] == '2':
+
+                        self.container[i] = testing_class_constr.Riddle(part[0], part[2], part[1])
+
+                        print(self.container[i].answer)
+                        i += 1
+
                 fout.write('Контейнер заполнен')
 
 
@@ -43,10 +50,6 @@ class cont():
                     # shape in
                     # type=shape_in.determine_shape(container,j)
                     self.container[j].printMe(fout)
-                    if self.container[j].index == '0':
-                        fout.write(f'\n{j}: Это цитата: {self.container[j].country} - {self.container[j].content}')
-                    elif self.container[j].index == '1':
-                        fout.write(f'\n{j}: Это афоризм: {self.container[j].name} - {self.container[j].content}')
 
             elif razmernost == 0:
                 fout.write(f'\nКонтейнер содержит {razmernost} элементов:')
@@ -68,12 +71,8 @@ class cont():
         with open("out.txt", "a", encoding='utf-8') as fout:
             if razmernost != 0:
                 for j in range(0, razmernost):
-
-                    # shape in
-                    # type=shape_in.determine_shape(container,j)
                     if self.container[j].index == '0':
-                        fout.write(
-                            f'\n{j}: Это цитата: {self.container[j].country} - {self.container[j].content}')
+                        self.container[j].printMe(fout)
 
     def filtered_output_by_aforizm(self):
         razmernost = 0
@@ -91,5 +90,5 @@ class cont():
                     # shape in
                     # type=shape_in.determine_shape(container,j)
                     if self.container[j].index == '1':
-                        fout.write(f'\n{j}: Это афоризм: {self.container[j].name} - {self.container[j].content}')
+                        self.container[j].printMe(fout)
 
