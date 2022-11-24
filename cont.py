@@ -53,3 +53,25 @@ class cont():
 
     def clear(self):
         self.container=[]
+
+    def mark_count(self):
+        razmernost = 0
+        for i in range(len(self.container)):
+            if self.container[i] == "":
+                with open("out.txt", "a", encoding='utf-8') as fout:
+                    fout.write(f'\nКонтейнер содержит {i} элементов:')
+                    razmernost = i
+                break
+        mark_example='",.;:!?)(\/'
+
+        with open("out.txt", "a", encoding='utf-8') as fout:
+            for i in range(0, razmernost):
+                punc_count = 0
+                for mark in mark_example:
+                    str = self.container[i].content
+                    for j in range(len(str)):
+                        if str[j].find(mark) != -1:
+                            punc_count += 1
+
+                fout.write(f'\nВ строке {i}, содержится {punc_count} знаков препинания')
+
