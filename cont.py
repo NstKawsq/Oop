@@ -58,6 +58,47 @@ class cont():
     def clear(self):
         self.container=[]
 
+    def mark_count(self):
+        razmernost = 0
+        for i in range(len(self.container)):
+            if self.container[i] == "":
+                with open("out.txt", "a", encoding='utf-8') as fout:
+                    fout.write(f'\nКонтейнер содержит {i} элементов:')
+                    razmernost = i
+                break
+        mark_example = '",.;:!?)(\/'
+
+        with open("out.txt", "a", encoding='utf-8') as fout:
+            for i in range(0, razmernost):
+                punc_count = 0
+                for mark in mark_example:
+                    str = self.container[i].content
+                    for j in range(len(str)):
+                        if str[j].find(mark) != -1:
+                            punc_count += 1
+
+                fout.write(f'\nВ строке {i}, содержится {punc_count} знаков препинания')
+
+    def mark_for_sort(self, container):
+        punc_count = 0
+        punc_marks = '"",.;:!?\/'
+        for mark in punc_marks:
+            str = container.content
+            for j in range(len(str)):
+                if str[j].find(mark) != -1:
+                    punc_count += 1
+        return punc_count
+
+    def sort(self):
+        for i in range(len(self.container)):
+            if self.container[i] == "":
+                razmernost = i
+                break
+
+        for i in range(razmernost - 1):
+            for j in range(razmernost - i - 1):
+                if self.mark_for_sort(self.container[i]) > self.mark_for_sort(self.container[j]):
+                    self.container[i], self.container[j] = self.container[j], self.container[i]
 
     def filtered_output_by_quotation(self):
         razmernost = 0
