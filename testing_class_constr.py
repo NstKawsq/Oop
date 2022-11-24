@@ -13,3 +13,9 @@ class Aforizm(Mudrost):
     def __init__(self, index, content, country):
         Mudrost.__init__(self, index, content)
         self.country = country
+
+
+class riddle(Mudrost):
+    def __init__(self, index, content, answer):
+        Mudrost.__init__(self, index, content)
+        self.answer=answer

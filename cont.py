@@ -13,15 +13,24 @@ class cont():
                     if part[0] == '0':
                         self.container[i] = testing_class_constr.Aforizm(part[0], part[2], part[1])
 
-                        print(self.container[i].country)
+                        #print(self.container[i].country)
                         i += 1
 
                     elif part[0] == '1':
 
                         self.container[i] = testing_class_constr.Quot(part[0], part[2], part[1])
 
-                        print(self.container[i].name)
+                        #print(self.container[i].name)
                         i += 1
+
+                    elif part[0] == '2':
+
+                        self.container[i] = testing_class_constr.riddle(part[0], part[2], part[1])
+
+                        #print(self.container[i].answer)
+                        i += 1
+
+
 
                 fout.write('Контейнер заполнен')
 
@@ -43,9 +52,13 @@ class cont():
                     # shape in
                     # type=shape_in.determine_shape(container,j)
                     if self.container[j].index == '0':
-                        fout.write(f'\n{j}: Это {self.container[j].index}: {self.container[j].country} - {self.container[j].content}')
+                        fout.write(f'\n{j}: Это афоризм: {self.container[j].country} - {self.container[j].content}')
                     elif self.container[j].index == '1':
-                        fout.write(f'\n{j}: Это {self.container[j].index}: {self.container[j].name} - {self.container[j].content}')
+                        fout.write(f'\n{j}: Это цитата: {self.container[j].name} - {self.container[j].content}')
+                    elif self.container[j].index == '2':
+                        fout.write(f'\n{j}: Это загадка: {self.container[j].content} - {self.container[j].answer}')
+
+
 
             elif razmernost == 0:
                 fout.write(f'\nКонтейнер содержит {razmernost} элементов:')
