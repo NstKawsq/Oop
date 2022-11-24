@@ -13,18 +13,12 @@ class cont():
                     if part[0] == '0':
                         self.container[i] = testing_class_constr.Aforizm(part[0], part[2], part[1])
 
-                        print(self.container[i].country)
                         i += 1
-
                     elif part[0] == '1':
-
                         self.container[i] = testing_class_constr.Quot(part[0], part[2], part[1])
 
-                        print(self.container[i].name)
                         i += 1
-
                 fout.write('Контейнер заполнен')
-
 
     def out(self):
         type = ''
@@ -53,3 +47,28 @@ class cont():
 
     def clear(self):
         self.container=[]
+
+    def multi(self):
+        razmernost = 0
+        for i in range(len(self.container)):
+            if self.container[i] == "":
+                razmernost = i
+                break
+
+        i = 0
+        multi_string=['']*2
+        if razmernost != 0:
+            for j in range(0, razmernost):
+                if self.container[j].index == '0':
+                    multi_string[i%2]='Цитата'
+                elif self.container[j].index == '1':
+                    multi_string[i % 2] = 'Афоризм'
+                i+=1
+                razmernost-=1
+
+                if i==2:
+                    print(f'{multi_string[0]} и {multi_string[1]}')
+                    i=0
+                    multi_string = [''] * 2
+                elif razmernost==0:
+                    print(f'{multi_string[0]}')
