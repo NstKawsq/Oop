@@ -75,3 +75,28 @@ class cont():
 
                 fout.write(f'\nВ строке {i}, содержится {punc_count} знаков препинания')
 
+
+
+    def mark_for_sort(self,container):
+        punc_count = 0
+        punc_marks = '"",.;:!?\/'
+        for mark in punc_marks:
+            str = container.content
+            for j in range(len(str)):
+                if str[j].find(mark) != -1:
+                    punc_count += 1
+        return punc_count
+
+    def sort(self):
+        for i in range(len(self.container)):
+            if self.container[i] == "":
+                razmernost = i
+                break
+
+        for i in range(razmernost - 1):
+            for j in range(razmernost - i - 1):
+                if self.mark_for_sort(self.container[i])>self.mark_for_sort(self.container[j]):
+                    self.container[i], self.container[j] = self.container[j], self.container[i]
+
+
+
