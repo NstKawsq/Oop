@@ -1,4 +1,3 @@
-import testing_class_constr
 import cont
 
 
