@@ -42,10 +42,11 @@ class cont():
 
                     # shape in
                     # type=shape_in.determine_shape(container,j)
+                    self.container[j].printMe(fout)
                     if self.container[j].index == '0':
-                        fout.write(f'\n{j}: Это {self.container[j].index}: {self.container[j].country} - {self.container[j].content}')
+                        fout.write(f'\n{j}: Это цитата: {self.container[j].country} - {self.container[j].content}')
                     elif self.container[j].index == '1':
-                        fout.write(f'\n{j}: Это {self.container[j].index}: {self.container[j].name} - {self.container[j].content}')
+                        fout.write(f'\n{j}: Это афоризм: {self.container[j].name} - {self.container[j].content}')
 
             elif razmernost == 0:
                 fout.write(f'\nКонтейнер содержит {razmernost} элементов:')
@@ -53,3 +54,42 @@ class cont():
 
     def clear(self):
         self.container=[]
+
+
+    def filtered_output_by_quotation(self):
+        razmernost = 0
+        for i in range(len(self.container)):
+            if self.container[i] == "":
+                with open("out.txt", "a", encoding='utf-8') as fout:
+                    fout.write(f'\nКонтейнер содержит {i} элементов:')
+                    razmernost = i
+                break
+
+        with open("out.txt", "a", encoding='utf-8') as fout:
+            if razmernost != 0:
+                for j in range(0, razmernost):
+
+                    # shape in
+                    # type=shape_in.determine_shape(container,j)
+                    if self.container[j].index == '0':
+                        fout.write(
+                            f'\n{j}: Это цитата: {self.container[j].country} - {self.container[j].content}')
+
+    def filtered_output_by_aforizm(self):
+        razmernost = 0
+        for i in range(len(self.container)):
+            if self.container[i] == "":
+                with open("out.txt", "a", encoding='utf-8') as fout:
+                    fout.write(f'\nКонтейнер содержит {i} элементов:')
+                    razmernost = i
+                break
+
+        with open("out.txt", "a", encoding='utf-8') as fout:
+            if razmernost != 0:
+                for j in range(0, razmernost):
+
+                    # shape in
+                    # type=shape_in.determine_shape(container,j)
+                    if self.container[j].index == '1':
+                        fout.write(f'\n{j}: Это афоризм: {self.container[j].name} - {self.container[j].content}')
+
