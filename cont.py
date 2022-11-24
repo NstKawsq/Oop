@@ -143,3 +143,33 @@ class Cont:
                 for j in range(0, container_filled_sections):
                     if self.container[j].index == '1':
                         self.container[j].printMe(fileout)
+
+    def multi(self):
+        razmernost = 0
+        for i in range(len(self.container)):
+            if self.container[i] == "":
+                razmernost = i
+                break
+
+        i = 0
+        multi_string = [''] * 3
+        if razmernost != 0:
+            for j in range(0, razmernost):
+                if self.container[j].index == '0':
+                    multi_string[i % 3] = 'Цитата'
+                elif self.container[j].index == '1':
+                    multi_string[i % 3] = 'Афоризм'
+                elif self.container[j].index == '2':
+                    multi_string[i % 3] = 'Загадка'
+                i += 1
+                razmernost -= 1
+
+                if i == 3:
+                    print(f'{multi_string[0]} и {multi_string[1]} и {multi_string[2]}')
+                    i = 0
+                    multi_string = [''] * 3
+                elif razmernost == 0:
+                    if i==1:
+                        print(f'{multi_string[0]}')
+                    elif i==2:
+                        print(f'{multi_string[0]} и {multi_string[1]}')

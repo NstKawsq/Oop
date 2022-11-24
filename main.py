@@ -3,6 +3,7 @@ import cont
 
 temp = cont.Cont()
 flag = temp.input()
+temp.multi()
 if flag[1] == 0:
     temp.out()
     temp.mark_count()
